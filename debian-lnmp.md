@@ -15,7 +15,7 @@ apt update -y && apt upgrade -y
 
 ~~~bash
 #安装基础工具
-apt install build-essential wget bzip2 git screen -y
+apt install build-essential wget curl bzip2 git screen -y
 ~~~
 
 安装MARIADB
@@ -89,7 +89,7 @@ After=network.target
 [Service]
 Type=forking
 PermissionsStartOnly=true
-PIDFile=/data/mysql/************* YOU HOST NAME *************.pid
+PIDFile=/data/mysql/*******.pid
 ExecStart=/usr/local/mysql/support-files/mysql.server start
 ExecReload=/usr/local/mysql/support-files/mysql.server restart
 ExecStop=/usr/local/mysql/support-files/mysql.server stop
