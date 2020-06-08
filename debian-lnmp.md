@@ -199,6 +199,17 @@ vi /usr/local/nginx/conf/nginx.conf
 6. 在http{} 节点末尾添加 “include ../vhost/*.vhost;” 使其支持vhost配置
 ~~~
 
+> NGINX 并发优化
+
+~~~bash
+worker_processes 8;(跟据服务器CPU内核数量配置此参数)
+worker_rlimit_nofile 65535; (增加此参数)
+events {
+    use epoll;
+    worker_connections  65535;
+}
+~~~
+
 > NGINX 配置环境变量
 
 ~~~bash
@@ -357,6 +368,14 @@ vi /usr/local/php/etc/php-fpm.d/www.conf
 listen.owner = www
 listen.group = www
 listen.mode = 0660
+~~~
+
+>PHP-FPM性能优化
+~~~bash
+#将默认动态创建子进程参数修改为静态创建方式
+将 pm = dynamic 修改为 pm = static
+pm.max_children = 350 (16G内存分配参考配置 说明:每个进程占用约20M~30M)
+pm.max_requests = 500 (激活该参数 说明:每个工作进程处理完500个请求后自动重启,目的防止内存溢出)
 ~~~
 
 > PHP 创建自启动脚本
