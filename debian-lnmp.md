@@ -421,7 +421,7 @@ apt install tcl -y
 > REDIS 下载安装包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/redis-5.0.8.tar.gz && tar -zxvf redis-5.0.8.tar.gz && cd redis-5.0.8
+cd /usr/local/src && wget http://121.199.59.110/redis-6.0.5.tar.gz && tar -zxvf redis-6.0.5.tar.gz && cd redis-6.0.5
 ~~~
 
 > REDIS 编译及测试
@@ -434,9 +434,9 @@ make -j4 && make test
 
 ~~~bash
 mkdir -p /usr/local/redis
-cp /usr/local/src/redis-5.0.8/redis.conf /usr/local/redis/
-cp /usr/local/src/redis-5.0.8/src/redis-cli /usr/local/redis/
-cp /usr/local/src/redis-5.0.8/src/redis-server /usr/local/redis/
+cp /usr/local/src/redis-6.0.5/redis.conf /usr/local/redis/
+cp /usr/local/src/redis-6.0.5/src/redis-cli /usr/local/redis/
+cp /usr/local/src/redis-6.0.5/src/redis-server /usr/local/redis/
 ~~~
 
 > REDIS 配置参数
