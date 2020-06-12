@@ -162,8 +162,8 @@ apt install libpcre3-dev -y
 > NGINX 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/nginx-1.81.0.tar.gz && tar -zxvf nginx-1.81.0.tar.gz && cd nginx-1.81
-0.~~~
+cd /usr/local/src && wget http://121.199.59.110/nginx-1.18.0.tar.gz && tar -zxvf nginx-1.18.0.tar.gz && cd nginx-1.18.0
+~~~
 
 > NGINX 编译及安装
 
