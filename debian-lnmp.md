@@ -269,7 +269,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 > PHP 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/php-7.4.4.tar.bz2 && tar jxf php-7.4.4.tar.bz2 && cd php-7.4.4
+cd /usr/local/src && wget https://www.php.net/distributions/php-7.4.7.tar.bz2 && tar jxf php-7.4.7.tar.bz2 && cd php-7.4.7
 ~~~
 
 > PHP 编译及安装
@@ -489,7 +489,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.4/ext && wget http://121.199.59.110/redis-5.2.0.tgz && tar -zxvf redis-5.2.0.tgz && cd redis-5.2.0
+cd /usr/local/src/php-7.4.7/ext && wget http://121.199.59.110/redis-5.2.0.tgz && tar -zxvf redis-5.2.0.tgz && cd redis-5.2.0
 ~~~
 
 > REDIS编译安装
@@ -521,7 +521,7 @@ PHP安装SWOOLE扩展支持
 > SWOOLE 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.4/ext && git clone https://github.com/swoole/swoole-src.git && cd swoole-src
+cd /usr/local/src/php-7.4.7/ext && git clone https://github.com/swoole/swoole-src.git && cd swoole-src
 ~~~
 
 > SWOOLE 编译安装
