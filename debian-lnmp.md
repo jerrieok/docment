@@ -1,31 +1,149 @@
 ***Debian10 部署 lnmp + redis + swoole 生产环境***
 ==============================================================
 
-* ModifyTime:2020-03-21  Author:JerRie
+* ModifyTime:2020-06-15  Author:JerRie
 
 ------------
 
 安装准备
 --------------------------------------------------------------
 
+> 更新系统
+
 ~~~bash
-#更新系统
 apt update -y && apt upgrade -y
 ~~~
 
+> 安装基础工具
+
 ~~~bash
-#安装基础工具
 apt install build-essential wget curl bzip2 git screen -y
 ~~~
 
+> 修改vi配置
+
 ~~~bash
-#自带vim不好用
 apt-get install vim vim-runtime exuberant-ctags -y
-#增加语法高亮
 echo "syntax on" >> ~/.vimrc && echo "set number" >> ~/.vimrc
 ~~~~
 
+> 控制台着色配置
 
+~~~bash
+vi ~/.bashrc
+#控制台显示样式
+export PS1='\[\e[35;40m\][\u@\h \[\e[33;36m\]\W\[\e[33;40m\]]\[\e[35;40m\]❯\[\e[33;40m\]❯\[\e[32;40m\]❯ \[\e[01;37m\]'
+#ls标识文件列表颜色
+alias ls='ls --color=auto'
+~~~
+
+------------
+
+安装NGINX
+--------------------------------------------------------------
+
+> NGINX 准备工作
+
+~~~bash
+#创建用户
+groupadd www && useradd -s /sbin/nologin -g www www
+
+#创建目录
+mkdir -p /data/web && chown -R www:www /data/web
+
+#安装依赖
+apt install libpcre3-dev -y
+~~~
+
+> NGINX 下载源码包并解压
+
+~~~bash
+cd /usr/local/src && wget http://121.199.59.110/nginx-1.18.0.tar.gz && tar -zxvf nginx-1.18.0.tar.gz && cd nginx-1.18.0
+~~~
+
+> NGINX 编译及安装
+
+~~~bash
+./configure \
+--prefix=/usr/local/nginx \
+--without-http_memcached_module \
+--user=www  \
+--group=www \
+--with-http_stub_status_module \
+--with-http_ssl_module \
+--with-http_gzip_static_module && make -j4 && make install
+~~~
+
+> NGINX 配置
+
+~~~bash
+vi /usr/local/nginx/conf/nginx.conf
+~~~
+
+~~~bash
+1. user nobody; 除前面的#号并修改为 user www www;
+2. pid logs/nginx.pid; 去除前面的#号
+3. 修改格式(去除#号即可)
+   log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                     '$status $body_bytes_sent "$http_referer" '
+                     '"$http_user_agent" "$http_x_forwarded_for"';
+4.  gzip  on; 开启资源压缩
+    gzip_http_version 1.1;
+    gzip_comp_level 3;
+    gzip_types text/css application/javascript;
+5. server_tokens off; 增加一行(隐藏版本)
+6. 在http{} 节点末尾添加 “include ../vhost/*.vhost;” 使其支持vhost配置
+~~~
+
+> NGINX 并发优化
+
+~~~bash
+worker_processes 8;(跟据服务器CPU内核数量配置此参数)
+worker_rlimit_nofile 65535; (增加此参数)
+events {
+    use epoll;
+    worker_connections  65535;
+}
+~~~
+
+> NGINX 配置环境变量
+
+~~~bash
+touch /etc/profile.d/nginx.sh
+echo 'export PATH=$PATH:/usr/local/nginx/sbin/' > /etc/profile.d/nginx.sh
+chmod 0777 /etc/profile.d/nginx.sh
+source /etc/profile.d/nginx.sh
+~~~
+
+> NGINX 创建自启动脚本
+
+~~~bash
+vi /lib/systemd/system/nginx.service
+~~~
+
+~~~bash
+[Unit]
+Description=nginx
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/usr/local/nginx/logs/nginx.pid
+ExecStart=/usr/local/nginx/sbin/nginx
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/nginx/sbin/nginx -s quit
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+~~~
+
+~~~bash
+systemctl enable nginx.service      #加入自启动服务
+systemctl start nginx.service       #启动服务
+~~~
+
+------------
 
 安装MARIADB
 --------------------------------------------------------------
@@ -154,112 +272,6 @@ mysql -uroot -p
 ~~~bash
 GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY '*********' WITH GRANT OPTION;
 quit;
-~~~
-
-------------
-
-安装NGINX
---------------------------------------------------------------
-
-> NGINX 准备工作
-
-~~~bash
-#创建用户
-groupadd www && useradd -s /sbin/nologin -g www www
-
-#创建目录
-mkdir -p /data/web && chown -R www:www /data/web
-
-#安装依赖
-apt install libpcre3-dev -y
-~~~
-
-> NGINX 下载源码包并解压
-
-~~~bash
-cd /usr/local/src && wget http://121.199.59.110/nginx-1.18.0.tar.gz && tar -zxvf nginx-1.18.0.tar.gz && cd nginx-1.18.0
-~~~
-
-> NGINX 编译及安装
-
-~~~bash
-./configure \
---prefix=/usr/local/nginx \
---without-http_memcached_module \
---user=www  \
---group=www \
---with-http_stub_status_module \
---with-http_ssl_module \
---with-http_gzip_static_module && make -j4 && make install
-~~~
-
-> NGINX 配置
-
-~~~bash
-vi /usr/local/nginx/conf/nginx.conf
-~~~
-
-~~~bash
-1. user nobody; 除前面的#号并修改为 user www www;
-2. pid logs/nginx.pid; 去除前面的#号
-3. 修改格式(去除#号即可)
-   log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                     '$status $body_bytes_sent "$http_referer" '
-                     '"$http_user_agent" "$http_x_forwarded_for"';
-4.  gzip  on; 开启资源压缩
-    gzip_http_version 1.1;
-    gzip_comp_level 3;
-    gzip_types text/css application/javascript;
-5. server_tokens off; 增加一行(隐藏版本)
-6. 在http{} 节点末尾添加 “include ../vhost/*.vhost;” 使其支持vhost配置
-~~~
-
-> NGINX 并发优化
-
-~~~bash
-worker_processes 8;(跟据服务器CPU内核数量配置此参数)
-worker_rlimit_nofile 65535; (增加此参数)
-events {
-    use epoll;
-    worker_connections  65535;
-}
-~~~
-
-> NGINX 配置环境变量
-
-~~~bash
-touch /etc/profile.d/nginx.sh
-echo 'export PATH=$PATH:/usr/local/nginx/sbin/' > /etc/profile.d/nginx.sh
-chmod 0777 /etc/profile.d/nginx.sh
-source /etc/profile.d/nginx.sh
-~~~
-
-> NGINX 创建自启动脚本
-
-~~~bash
-vi /lib/systemd/system/nginx.service
-~~~
-
-~~~bash
-[Unit]
-Description=nginx
-After=network.target
-
-[Service]
-Type=forking
-PIDFile=/usr/local/nginx/logs/nginx.pid
-ExecStart=/usr/local/nginx/sbin/nginx
-ExecReload=/usr/local/nginx/sbin/nginx -s reload
-ExecStop=/usr/local/nginx/sbin/nginx -s quit
-PrivateTmp=true
-
-[Install]
-WantedBy=multi-user.target
-~~~
-
-~~~bash
-systemctl enable nginx.service      #加入自启动服务
-systemctl start nginx.service       #启动服务
 ~~~
 
 ------------
