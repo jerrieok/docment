@@ -81,7 +81,8 @@ cd /usr/local/mysql/ && scripts/mysql_install_db --user=mysql --datadir=/data/my
 > MARIADB 复制MYSQL配置文件
 
 ~~~bash
-cp /usr/local/mysql/support-files/wsrep.cnf /local/src/mysql/etc/my.cnf
+mkdir /usr/local/mysql/etc/
+cp /usr/local/mysql/support-files/wsrep.cnf /usr/local/mysql/etc/my.cnf
 ~~~
 
 > MARIADB 创建自启动脚本
