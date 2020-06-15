@@ -85,6 +85,11 @@ mkdir /usr/local/mysql/etc/
 cp /usr/local/mysql/support-files/wsrep.cnf /usr/local/mysql/etc/my.cnf
 ~~~
 
+> 指定mysql.server启停脚本中的
+~~~bash
+mysqld_pid_file_path='/data/mysql/mysqld.pid'
+~~~
+
 > MARIADB 创建自启动脚本
 
 ~~~bash
