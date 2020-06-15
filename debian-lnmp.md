@@ -18,6 +18,15 @@ apt update -y && apt upgrade -y
 apt install build-essential wget curl bzip2 git screen -y
 ~~~
 
+~~~bash
+#自带vim不好用
+apt-get install vim vim-runtime exuberant-ctags -y
+#增加语法高亮
+echo "syntax on" > ~/.vimrc && echo "set number" > ~/.vimrc
+~~~~
+
+
+
 安装MARIADB
 --------------------------------------------------------------
 
