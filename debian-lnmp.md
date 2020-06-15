@@ -48,7 +48,7 @@ cd /usr/local/src && wget http://121.199.59.110/mariadb-10.4.13.tar.gz && tar -z
 ~~~bash
 cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
 -DCMAKE_BUILD_TYPE=Release \
--DSYSCONFDIR=/etc \
+-DSYSCONFDIR=/local/src/mysql/etc \
 -DMYSQL_DATADIR=/data/mysql \
 -DMYSQL_UNIX_ADDR=/data/mysql/mysqld.sock \
 -DEXTRA_CHARSETS=all \
@@ -72,7 +72,7 @@ cd /usr/local/mysql/ && scripts/mysql_install_db --user=mysql --datadir=/data/my
 > MARIADB 复制MYSQL配置文件
 
 ~~~bash
-cp /usr/local/mysql/support-files/wsrep.cnf /etc/my.cnf
+cp /usr/local/mysql/support-files/wsrep.cnf /local/src/mysql/etc/my.cnf
 ~~~
 
 > MARIADB 创建自启动脚本
