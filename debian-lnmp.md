@@ -31,7 +31,7 @@ groupadd mysql && useradd -s /sbin/nologin -g mysql mysql
 mkdir -p /usr/local/mysql && mkdir -p /data/mysql && chown -R mysql:mysql /data/mysql
 
 #删除自带库
-apt autoremove libmariadb*
+apt autoremove libmariadb* -y
 
 #安装依赖
 apt install cmake libncurses5-dev libgnutls28-dev bison -y
