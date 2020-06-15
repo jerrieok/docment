@@ -377,7 +377,7 @@ vi /usr/local/php/etc/php-fpm.d/www.conf
 
 ~~~bash
 #指定SOCK文件位置
-将 listen = 127.0.0.1:9000 修改为 listen = /usr/local/php/var/run/php-fpm.sock
+将 listen = 127.0.0.1:9000 修改为 listen = /dev/shm/php-fpm.sock
 
 #监听的用户及组
 listen.owner = www
@@ -389,8 +389,9 @@ listen.mode = 0660
 ~~~bash
 #将默认动态创建子进程参数修改为静态创建方式
 将 pm = dynamic 修改为 pm = static
-pm.max_children = 350 (16G内存分配参考配置 说明:每个进程占用约20M~30M)
+pm.max_children = 300 (16G内存分配参考配置 说明:每个进程占用约20M~30M)
 pm.max_requests = 500 (激活该参数 说明:每个工作进程处理完500个请求后自动重启,目的防止内存溢出)
+rlimit_files = 65535 (最大允许读取的文件数, 对于并发情况建议设置最大值)
 ~~~
 
 > PHP 创建自启动脚本
