@@ -22,7 +22,7 @@ apt install build-essential wget curl bzip2 git screen -y
 #自带vim不好用
 apt-get install vim vim-runtime exuberant-ctags -y
 #增加语法高亮
-echo "syntax on" > ~/.vimrc && echo "set number" > ~/.vimrc
+echo "syntax on" >> ~/.vimrc && echo "set number" >> ~/.vimrc
 ~~~~
 
 
@@ -99,7 +99,7 @@ After=network.target
 [Service]
 Type=forking
 PermissionsStartOnly=true
-PIDFile=/data/mysql/*******.pid
+PIDFile=/data/mysql/mysqld.pid
 ExecStart=/usr/local/mysql/support-files/mysql.server start
 ExecReload=/usr/local/mysql/support-files/mysql.server restart
 ExecStop=/usr/local/mysql/support-files/mysql.server stop
