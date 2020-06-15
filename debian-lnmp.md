@@ -57,9 +57,9 @@ cd /usr/local/src && wget http://121.199.59.110/mariadb-10.4.13.tar.gz && tar -z
 ~~~bash
 cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
 -DCMAKE_BUILD_TYPE=Release \
--DSYSCONFDIR=/local/src/mysql/etc \
+-DSYSCONFDIR=/usr/local/mysql/support-files \
 -DMYSQL_DATADIR=/data/mysql \
--DMYSQL_UNIX_ADDR=/data/mysql/mysqld.sock \
+-DMYSQL_UNIX_ADDR=/dev/shm/mysql.sock \
 -DEXTRA_CHARSETS=all \
 -DDEFAULT_CHARSET=utf8mb4 \
 -DDEFAULT_COLLATION=utf8mb4_general_ci \
@@ -81,12 +81,12 @@ cd /usr/local/mysql/ && scripts/mysql_install_db --user=mysql --datadir=/data/my
 > MARIADB 复制MYSQL配置文件
 
 ~~~bash
-mkdir /usr/local/mysql/etc/
-cp /usr/local/mysql/support-files/wsrep.cnf /usr/local/mysql/etc/my.cnf
+cp /usr/local/mysql/support-files/wsrep.cnf /usr/local/mysql/support-files/my.cnf
 ~~~
 
 > 指定mysql.server启停脚本中的
 ~~~bash
+vi /usr/local/mysql/support-files/mysql.server
 mysqld_pid_file_path='/data/mysql/mysqld.pid'
 ~~~
 
