@@ -17,13 +17,13 @@ apt update -y && apt upgrade -y
 > 安装基础工具
 
 ~~~bash
-apt install build-essential wget curl bzip2 git screen -y
+apt install -y build-essential wget curl bzip2 git screen
 ~~~
 
 > 修改vi配置
 
 ~~~bash
-apt-get install vim vim-runtime exuberant-ctags -y
+apt-get install -y vim vim-runtime exuberant-ctags
 echo "syntax on" >> ~/.vimrc && echo "set number" >> ~/.vimrc
 ~~~~
 
@@ -52,7 +52,7 @@ groupadd www && useradd -s /sbin/nologin -g www www
 mkdir -p /data/web && chown -R www:www /data/web
 
 #安装依赖
-apt install libpcre3-dev -y
+apt install -y libpcre3-dev libssl-dev
 ~~~
 
 > NGINX 下载源码包并解压
@@ -158,10 +158,10 @@ groupadd mysql && useradd -s /sbin/nologin -g mysql mysql
 mkdir -p /usr/local/mysql && mkdir -p /data/mysql && chown -R mysql:mysql /data/mysql
 
 #删除自带库
-apt autoremove libmariadb* -y
+apt autoremove -y libmariadb*
 
 #安装依赖
-apt install cmake libncurses5-dev libgnutls28-dev bison -y
+apt install -y cmake libncurses5-dev libgnutls28-dev bison
 ~~~
 
 > MARIADB 下载源码包并解压
@@ -283,7 +283,7 @@ quit;
 
 ~~~bash
 #安装PHP依赖
-apt install -y libxml2-dev libssl-dev libsqlite3-dev libcurl4-gnutls-dev libpng-dev libjpeg-dev libfreetype6-dev libonig-dev libxslt1-dev libzip-dev
+apt install -y libxml2-dev libsqlite3-dev libcurl4-gnutls-dev libpng-dev libjpeg-dev libfreetype6-dev libonig-dev libxslt1-dev libzip-dev
 
 #PKGCONFIG依赖
 cd /usr/local/src && wget http://121.199.59.110/pkg-config-0.29.2.tar.gz && tar -zxvf pkg-config-0.29.2.tar.gz && cd pkg-config-0.29.2
@@ -443,7 +443,7 @@ systemctl start php-fpm.service       #启动服务
 
 ~~~bash
 #安装依赖
-apt install tcl -y
+apt install -y tcl
 ~~~
 
 > REDIS 下载安装包并解压
