@@ -300,7 +300,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 > PHP 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://www.php.net/distributions/php-7.4.7.tar.bz2 && tar jxf php-7.4.7.tar.bz2 && cd php-7.4.7
+cd /usr/local/src && wget http://121.199.59.110/php-7.4.7.tar.bz2 && tar jxf php-7.4.7.tar.bz2 && cd php-7.4.7
 ~~~
 
 > PHP 编译及安装
