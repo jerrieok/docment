@@ -56,7 +56,7 @@ groupadd www && useradd -s /sbin/nologin -g www www
 mkdir -p /data/web && chown -R www:www /data/web
 
 #安装依赖
-apt install -y libpcre3-dev libssl-dev
+apt install -y libpcre3-dev libssl-dev libzip-dev
 ~~~
 
 > NGINX 下载源码包并解压
@@ -287,7 +287,7 @@ quit;
 
 ~~~bash
 #安装PHP依赖
-apt install -y libxml2-dev libsqlite3-dev libcurl4-gnutls-dev libpng-dev libjpeg-dev libfreetype6-dev libonig-dev libxslt1-dev libzip-dev
+apt install -y libxml2-dev libsqlite3-dev libcurl4-gnutls-dev libpng-dev libjpeg-dev libfreetype6-dev libonig-dev libxslt1-dev
 
 #PKGCONFIG依赖
 cd /usr/local/src && wget http://121.199.59.110/pkg-config-0.29.2.tar.gz && tar -zxvf pkg-config-0.29.2.tar.gz && cd pkg-config-0.29.2
