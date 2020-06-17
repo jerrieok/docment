@@ -31,10 +31,14 @@ echo "syntax on" >> ~/.vimrc && echo "set number" >> ~/.vimrc
 
 ~~~bash
 vi ~/.bashrc
+
 #控制台显示样式
 export PS1='\[\e[35;40m\][\u@\h \[\e[33;36m\]\W\[\e[33;40m\]]\[\e[35;40m\]❯\[\e[33;40m\]❯\[\e[32;40m\]❯ \[\e[01;37m\]'
 #ls标识文件列表颜色
 alias ls='ls --color=auto'
+
+#生效配置
+source ~/.bashrc
 ~~~
 
 ------------
