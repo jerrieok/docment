@@ -521,7 +521,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.9/ext && wget http://121.199.59.110/redis-5.2.2.tgz && tar -zxvf redis-5.2.2.tgz && cd redis-5.2.2
+cd /usr/local/src/php-7.4.9/ext && wget http://121.199.59.110/redis-5.3.1.tgz && tar -zxvf redis-5.3.1.tgz && cd redis-5.3.1
 ~~~
 
 > REDIS编译安装
