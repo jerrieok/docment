@@ -62,7 +62,7 @@ apt install -y libpcre3-dev libssl-dev libzip-dev
 > NGINX 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/nginx-1.18.0.tar.gz && tar -zxvf nginx-1.18.0.tar.gz && cd nginx-1.18.0
+cd /usr/local/src && wget http://nginx.org/download/nginx-1.18.0.tar.gz && tar -zxvf nginx-1.18.0.tar.gz && cd nginx-1.18.0
 ~~~
 
 > NGINX 编译及安装
@@ -171,7 +171,7 @@ apt install -y cmake libncurses5-dev libgnutls28-dev bison
 > MARIADB 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/mariadb-10.5.5.tar.gz && tar -zxvf mariadb-10.5.5.tar.gz && cd mariadb-10.5.5
+cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-10.5.8/source/mariadb-10.5.8.tar.gz && tar -zxvf mariadb-10.5.8.tar.gz && cd mariadb-10.5.8
 ~~~
 
 > MARIADB 编译安装
@@ -521,7 +521,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.9/ext && wget http://121.199.59.110/redis-5.3.1.tgz && tar -zxvf redis-5.3.1.tgz && cd redis-5.3.1
+cd /usr/local/src/php-7.4.9/ext && wget http://121.199.59.110/redis-5.2.2.tgz && tar -zxvf redis-5.2.2.tgz && cd redis-5.2.2
 ~~~
 
 > REDIS编译安装
