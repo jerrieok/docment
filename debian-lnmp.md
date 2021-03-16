@@ -171,7 +171,7 @@ apt install -y cmake libncurses5-dev libgnutls28-dev bison
 > MARIADB 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-10.5.8/source/mariadb-10.5.8.tar.gz && tar -zxvf mariadb-10.5.8.tar.gz && cd mariadb-10.5.8
+cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-10.5.9/source/mariadb-10.5.9.tar.gz && tar -zxvf mariadb-10.5.9.tar.gz && cd mariadb-10.5.9
 ~~~
 
 > MARIADB 编译安装
@@ -300,7 +300,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 > PHP 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/php-7.4.9.tar.bz2 && tar jxf php-7.4.9.tar.bz2 && cd php-7.4.9
+cd /usr/local/src && wget http://121.199.59.110/php-7.4.16.tar.bz2 && tar jxf php-7.4.16.tar.bz2 && cd php-7.4.16
 ~~~
 
 > PHP 编译及安装
@@ -453,7 +453,7 @@ apt install -y tcl
 > REDIS 下载安装包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/redis-6.0.6.tar.gz && tar -zxvf redis-6.0.6.tar.gz && cd redis-6.0.6
+cd /usr/local/src && wget http://121.199.59.110/redis-6.2.1.tar.gz && tar -zxvf redis-6.2.1.tar.gz && cd redis-6.2.1
 ~~~
 
 > REDIS 编译及测试
@@ -466,9 +466,9 @@ make -j4 && make test
 
 ~~~bash
 mkdir -p /usr/local/redis
-cp /usr/local/src/redis-6.0.6/redis.conf /usr/local/redis/
-cp /usr/local/src/redis-6.0.6/src/redis-cli /usr/local/redis/
-cp /usr/local/src/redis-6.0.6/src/redis-server /usr/local/redis/
+cp /usr/local/src/redis-6.2.1/redis.conf /usr/local/redis/
+cp /usr/local/src/redis-6.2.1/src/redis-cli /usr/local/redis/
+cp /usr/local/src/redis-6.2.1/src/redis-server /usr/local/redis/
 ~~~
 
 > REDIS 配置参数
@@ -521,7 +521,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.9/ext && wget http://121.199.59.110/redis-5.2.2.tgz && tar -zxvf redis-5.2.2.tgz && cd redis-5.2.2
+cd /usr/local/src/php-7.4.16/ext && wget http://121.199.59.110/redis-5.2.2.tgz && tar -zxvf redis-5.2.2.tgz && cd redis-5.2.2
 ~~~
 
 > REDIS编译安装
@@ -553,7 +553,7 @@ PHP安装SWOOLE扩展支持
 > SWOOLE 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.9/ext && git clone https://github.com/swoole/swoole-src.git && cd swoole-src
+cd /usr/local/src/php-7.4.16/ext && git clone https://github.com/swoole/swoole-src.git && cd swoole-src
 ~~~
 
 > SWOOLE 编译安装
