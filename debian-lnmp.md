@@ -290,7 +290,7 @@ quit;
 apt install -y libxml2-dev libsqlite3-dev libcurl4-gnutls-dev libpng-dev libjpeg-dev libfreetype6-dev libonig-dev libxslt1-dev
 
 #PKGCONFIG依赖
-cd /usr/local/src && wget http://121.199.59.110/pkg-config-0.29.2.tar.gz && tar -zxvf pkg-config-0.29.2.tar.gz && cd pkg-config-0.29.2
+cd /usr/local/src && wget https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz && tar -zxvf pkg-config-0.29.2.tar.gz && cd pkg-config-0.29.2
 ./configure --with-internal-glib && make -j2 && make install
 
 #编译所需要的环境变量
@@ -300,7 +300,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 > PHP 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/php-7.4.22.tar.bz2 && tar jxf php-7.4.22.tar.bz2 && cd php-7.4.22
+cd /usr/local/src && wget https://www.php.net/distributions/php-7.4.22.tar.bz2 && tar jxf php-7.4.22.tar.bz2 && cd php-7.4.22
 ~~~
 
 > PHP 编译及安装
@@ -453,7 +453,7 @@ apt install -y tcl
 > REDIS 下载安装包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/redis-6.2.5.tar.gz && tar -zxvf redis-6.2.5.tar.gz && cd redis-6.2.5
+cd /usr/local/src && wget https://download.redis.io/releases/redis-6.2.5.tar.gz && tar -zxvf redis-6.2.5.tar.gz && cd redis-6.2.5
 ~~~
 
 > REDIS 编译及测试
@@ -521,7 +521,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.22/ext && wget http://121.199.59.110/redis-5.3.4.tgz && tar -zxvf redis-5.3.4.tgz && cd redis-5.3.4
+cd /usr/local/src/php-7.4.22/ext && wget http://pecl.php.net/get/redis-5.3.4.tgz && tar -zxvf redis-5.3.4.tgz && cd redis-5.3.4
 ~~~
 
 > REDIS编译安装
@@ -583,7 +583,7 @@ extension=swoole.so
 > NODEJS 下载并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/node-v14.17.5-linux-x64.tar.xz && tar -xvf node-v14.17.5-linux-x64.tar.xz
+cd /usr/local/src && wget https://npm.taobao.org/mirrors/node/v14.17.5/node-v14.17.5-linux-x64.tar.xz && tar -xvf node-v14.17.5-linux-x64.tar.xz
 ~~~
 
 > NODEJS 复制到程序目录
