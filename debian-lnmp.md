@@ -165,8 +165,8 @@ mkdir -p /usr/local/mysql && mkdir -p /data/mysql && chown -R mysql:mysql /data/
 apt autoremove -y libmariadb*
 
 #安装依赖
-apt install -y cmake libncurses5-dev libgnutls28-dev bison
-#apt install -y libpcre2-dev librocksdb5.17
+apt install -y cmake libncurses5-dev
+# libgnutls28-dev bison libpcre2-dev librocksdb5.17
 ~~~
 
 > MARIADB 下载源码包并解压
