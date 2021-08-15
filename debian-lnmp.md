@@ -8,7 +8,7 @@
 安装准备
 --------------------------------------------------------------
 
-> 更新系统 （apt-get update遇到错误，请运行 apt-get install debian-archive-keyring）
+> 更新系统 (apt-get update遇到错误,请运行: apt-get install debian-archive-keyring)
 
 ~~~bash
 apt update -y && apt upgrade -y
@@ -166,7 +166,7 @@ apt autoremove -y libmariadb*
 
 #安装依赖
 apt install -y cmake libncurses5-dev
-# libgnutls28-dev bison libpcre2-dev librocksdb5.17
+#可能需要安装的扩展:libgnutls28-dev bison libpcre2-dev librocksdb5.17
 ~~~
 
 > MARIADB 下载源码包并解压
@@ -210,7 +210,7 @@ cp /usr/local/mysql/support-files/wsrep.cnf /usr/local/mysql/support-files/my.cn
 > 指定mysql.server启停脚本中的
 ~~~bash
 vi /usr/local/mysql/support-files/mysql.server
-mysqld_pid_file_path='/data/mysql/mysqld.pid'
+mariadbd_pid_file_path='/data/mysql/mysqld.pid'
 ~~~
 
 > MARIADB 创建自启动脚本
@@ -554,7 +554,7 @@ PHP安装SWOOLE扩展支持
 > SWOOLE 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.22/ext && git clone https://github.com/swoole/swoole-src.git && cd swoole-src
+cd /usr/local/src/php-7.4.22/ext && git clone https://gitee.com/swoole/swoole.git && cd swoole
 ~~~
 
 > SWOOLE 编译安装
