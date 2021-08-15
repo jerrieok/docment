@@ -62,7 +62,7 @@ apt install -y libpcre3-dev libssl-dev libzip-dev
 > NGINX 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://nginx.org/download/nginx-1.18.0.tar.gz && tar -zxvf nginx-1.18.0.tar.gz && cd nginx-1.18.0
+cd /usr/local/src && wget http://nginx.org/download/nginx-1.20.1.tar.gz && tar -zxvf nginx-1.20.1.tar.gz && cd nginx-1.20.1
 ~~~
 
 > NGINX 编译及安装
