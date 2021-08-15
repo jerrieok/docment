@@ -75,7 +75,7 @@ cd /usr/local/src && wget http://nginx.org/download/nginx-1.20.1.tar.gz && tar -
 --group=www \
 --with-http_stub_status_module \
 --with-http_ssl_module \
---with-http_gzip_static_module && make -j4 && make install
+--with-http_gzip_static_module && make -j2 && make install
 ~~~
 
 > NGINX 配置
@@ -191,7 +191,7 @@ cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
 -DWITH_INNOBASE_STORAGE_ENGINE=1 \
 -DWITH_ARCHIVE_STPRAGE_ENGINE=1 \
 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
--DWITHOUT_TOKUDB=1 && make -j4 && make install
+-DWITHOUT_TOKUDB=1 && make -j2 && make install
 ~~~
 
 > MARIADB 初始化数据库
@@ -291,7 +291,7 @@ apt install -y libxml2-dev libsqlite3-dev libcurl4-gnutls-dev libpng-dev libjpeg
 
 #PKGCONFIG依赖
 cd /usr/local/src && wget http://121.199.59.110/pkg-config-0.29.2.tar.gz && tar -zxvf pkg-config-0.29.2.tar.gz && cd pkg-config-0.29.2
-./configure --with-internal-glib && make -j4 && make install
+./configure --with-internal-glib && make -j2 && make install
 
 #编译所需要的环境变量
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
@@ -343,7 +343,7 @@ cd /usr/local/src && wget http://121.199.59.110/php-7.4.22.tar.bz2 && tar jxf ph
 --enable-fileinfo \
 --enable-opcache \
 --with-xsl \
---with-pear && make -j4 && make install
+--with-pear && make -j2 && make install
 ~~~
 
 > PHP 复制配置文件
@@ -453,22 +453,22 @@ apt install -y tcl
 > REDIS 下载安装包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/redis-6.2.1.tar.gz && tar -zxvf redis-6.2.1.tar.gz && cd redis-6.2.1
+cd /usr/local/src && wget http://121.199.59.110/redis-6.2.5.tar.gz && tar -zxvf redis-6.2.5.tar.gz && cd redis-6.2.5
 ~~~
 
 > REDIS 编译及测试
 
 ~~~bash
-make -j4 && make test
+make -j2 && make test
 ~~~
 
 > REDIS 创建存储redis文件目录 将所需要的文件移到该目录下
 
 ~~~bash
 mkdir -p /usr/local/redis
-cp /usr/local/src/redis-6.2.1/redis.conf /usr/local/redis/
-cp /usr/local/src/redis-6.2.1/src/redis-cli /usr/local/redis/
-cp /usr/local/src/redis-6.2.1/src/redis-server /usr/local/redis/
+cp /usr/local/src/redis-6.2.5/redis.conf /usr/local/redis/
+cp /usr/local/src/redis-6.2.5/src/redis-cli /usr/local/redis/
+cp /usr/local/src/redis-6.2.5/src/redis-server /usr/local/redis/
 ~~~
 
 > REDIS 配置参数
@@ -521,7 +521,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.22/ext && wget http://121.199.59.110/redis-5.2.2.tgz && tar -zxvf redis-5.2.2.tgz && cd redis-5.2.2
+cd /usr/local/src/php-7.4.22/ext && wget http://121.199.59.110/redis-5.3.4.tgz && tar -zxvf redis-5.3.4.tgz && cd redis-5.3.4
 ~~~
 
 > REDIS编译安装
@@ -531,7 +531,7 @@ cd /usr/local/src/php-7.4.22/ext && wget http://121.199.59.110/redis-5.2.2.tgz &
 /usr/local/php/bin/phpize
 
 #编译及安装
-./configure --with-php-config=/usr/local/php/bin/php-config && make -j4 && make install
+./configure --with-php-config=/usr/local/php/bin/php-config && make -j2 && make install
 ~~~
 
 > REDIS 修改php.ini
@@ -583,13 +583,13 @@ extension=swoole.so
 > NODEJS 下载并解压
 
 ~~~bash
-cd /usr/local/src && wget http://121.199.59.110/node-v13.11.0-linux-x64.tar.xz && tar -xvf node-v13.11.0-linux-x64.tar.xz
+cd /usr/local/src && wget http://121.199.59.110/node-v14.17.5-linux-x64.tar.xz && tar -xvf node-v14.17.5-linux-x64.tar.xz
 ~~~
 
 > NODEJS 复制到程序目录
 
 ~~~bash
-mv node-v13.11.0-linux-x64 /usr/local/nodejs
+mv node-v14.17.5-linux-x64 /usr/local/nodejs
 ~~~
 
 > NODEJS 创建环境变量
