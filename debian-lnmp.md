@@ -171,7 +171,7 @@ apt install -y cmake libncurses5-dev libgnutls28-dev bison
 > MARIADB 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-10.5.9/source/mariadb-10.5.9.tar.gz && tar -zxvf mariadb-10.5.9.tar.gz && cd mariadb-10.5.9
+cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-10.6.4/source/mariadb-10.6.4.tar.gz && tar -zxvf mariadb-10.6.4.tar.gz && cd mariadb-10.6.4
 ~~~
 
 > MARIADB 编译安装
