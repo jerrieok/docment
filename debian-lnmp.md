@@ -8,7 +8,7 @@
 安装准备
 --------------------------------------------------------------
 
-> 更新系统
+> 更新系统 （apt-get update遇到错误，请运行 apt-get install debian-archive-keyring）
 
 ~~~bash
 apt update -y && apt upgrade -y
