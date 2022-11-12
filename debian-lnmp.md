@@ -1,7 +1,7 @@
 ***Debian10 部署 lnmp + redis + swoole 生产环境***
 ==============================================================
 
-* ModifyTime:2020-06-15  Author:JerRie
+* ModifyTime:2022-11-12  Author:JerRie
 
 ------------
 
@@ -62,7 +62,7 @@ apt install -y libpcre3-dev libssl-dev libzip-dev
 > NGINX 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://nginx.org/download/nginx-1.20.1.tar.gz && tar -zxvf nginx-1.20.1.tar.gz && cd nginx-1.20.1
+cd /usr/local/src && wget http://nginx.org/download/nginx-1.22.1.tar.gz && tar -zxvf nginx-1.22.1.tar.gz && cd nginx-1.22.1
 ~~~
 
 > NGINX 编译及安装
@@ -172,7 +172,7 @@ apt install -y cmake libncurses5-dev
 > MARIADB 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-10.6.4/source/mariadb-10.6.4.tar.gz && tar -zxvf mariadb-10.6.4.tar.gz && cd mariadb-10.6.4
+cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-10.6.11/source/mariadb-10.6.11.tar.gz && tar -zxvf mariadb-10.6.11.tar.gz && cd mariadb-10.6.11
 ~~~
 
 > MARIADB 编译安装
@@ -275,7 +275,7 @@ mysql -uroot -p
 ~~~
 
 ~~~bash
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY '*********' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'cmjzj1109ZJ' WITH GRANT OPTION;
 quit;
 ~~~
 
@@ -301,7 +301,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 > PHP 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://www.php.net/distributions/php-7.4.22.tar.bz2 && tar jxf php-7.4.22.tar.bz2 && cd php-7.4.22
+cd /usr/local/src && wget https://www.php.net/distributions/php-7.4.33.tar.bz2 && tar jxf php-7.4.33.tar.bz2 && cd php-7.4.33
 ~~~
 
 > PHP 编译及安装
@@ -522,7 +522,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.22/ext && wget http://pecl.php.net/get/redis-5.3.4.tgz && tar -zxvf redis-5.3.4.tgz && cd redis-5.3.4
+cd /usr/local/src/php-7.4.33/ext && wget http://pecl.php.net/get/redis-5.3.7.tgz && tar -zxvf redis-5.3.7.tgz && cd redis-5.3.7
 ~~~
 
 > REDIS编译安装
@@ -554,7 +554,7 @@ PHP安装SWOOLE扩展支持
 > SWOOLE 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.22/ext && git clone https://gitee.com/swoole/swoole.git && cd swoole
+cd /usr/local/src/php-7.4.33/ext && git clone https://gitee.com/swoole/swoole.git && cd swoole
 ~~~
 
 > SWOOLE 编译安装
@@ -584,13 +584,13 @@ extension=swoole.so
 > NODEJS 下载并解压
 
 ~~~bash
-cd /usr/local/src && wget https://npm.taobao.org/mirrors/node/v14.17.5/node-v14.17.5-linux-x64.tar.xz && tar -xvf node-v14.17.5-linux-x64.tar.xz
+cd /usr/local/src && wget https://npm.taobao.org/mirrors/node/v18.12.1/node-v18.12.1-linux-x64.tar.xz && tar -xvf node-v18.12.1-linux-x64.tar.xz
 ~~~
 
 > NODEJS 复制到程序目录
 
 ~~~bash
-mv node-v14.17.5-linux-x64 /usr/local/nodejs
+mv node-v18.12.1-linux-x64 /usr/local/nodejs
 ~~~
 
 > NODEJS 创建环境变量
