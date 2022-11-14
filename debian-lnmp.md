@@ -74,6 +74,7 @@ cd /usr/local/src && wget http://nginx.org/download/nginx-1.22.1.tar.gz && tar -
 --user=www  \
 --group=www \
 --with-http_stub_status_module \
+--with-http_realip_module \
 --with-http_ssl_module \
 --with-http_gzip_static_module && make -j2 && make install
 ~~~
