@@ -33,7 +33,7 @@ echo "syntax on" >> ~/.vimrc && echo "set number" >> ~/.vimrc
 vi ~/.bashrc
 
 #控制台显示样式
-export PS1='\[\e[35;40m\][\u@\h \[\e[33;36m\]\W\[\e[33;40m\]]\[\e[35;40m\]❯\[\e[33;40m\]❯\[\e[32;40m\]❯ \[\e[01;37m\]'
+export PS1='\[\e[35;40m\][\u@debian \[\e[33;36m\]\W\[\e[33;40m\]]\[\e[35;40m\]❯\[\e[33;40m\]❯\[\e[32;40m\]❯ \[\e[01;37m\]'
 #ls标识文件列表颜色
 alias ls='ls --color=auto'
 
@@ -62,7 +62,7 @@ apt install -y libpcre3-dev libssl-dev libzip-dev
 > NGINX 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget http://nginx.org/download/nginx-1.22.1.tar.gz && tar -zxvf nginx-1.22.1.tar.gz && cd nginx-1.22.1
+cd /usr/local/src && wget http://nginx.org/download/nginx-1.24.0.tar.gz && tar -zxvf nginx-1.24.0.tar.gz && cd nginx-1.24.0
 ~~~
 
 > NGINX 编译及安装
@@ -173,7 +173,7 @@ apt install -y cmake libncurses5-dev
 > MARIADB 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-10.6.11/source/mariadb-10.6.11.tar.gz && tar -zxvf mariadb-10.6.11.tar.gz && cd mariadb-10.6.11
+cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-11.2.1/source/mariadb-11.2.1.tar.gz && tar -zxvf mariadb-11.2.1.tar.gz && cd mariadb-11.2.1
 ~~~
 
 > MARIADB 编译安装
