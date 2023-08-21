@@ -288,7 +288,7 @@ quit;
 
 ~~~bash
 #安装PHP依赖
-apt install -y libxml2-dev libsqlite3-dev libcurl4-gnutls-dev libpng-dev libjpeg-dev libfreetype6-dev libonig-dev libxslt1-dev
+apt install -y libxml2-dev libsqlite3-dev libcurl4-gnutls-dev libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev libonig-dev libxslt1-dev
 
 #PKGCONFIG依赖
 cd /usr/local/src && wget https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz && tar -zxvf pkg-config-0.29.2.tar.gz && cd pkg-config-0.29.2
@@ -318,18 +318,16 @@ cd /usr/local/src && wget https://www.php.net/distributions/php-8.2.8.tar.bz2 &&
 --with-pdo-mysql=mysqlnd \
 --with-curl \
 --enable-gd \
---enable-gd-native-ttf \
---with-iconv-dir \
---with-jpeg-dir \
---with-png-dir \
---with-freetype-dir \
+--with-iconv \
+--with-jpeg \
+--with-webp \
+--with-freetype \
 --with-zlib \
 --enable-opcache \
 --enable-xml \
 --enable-bcmath \
 --enable-shmop \
 --enable-sysvsem \
---enable-inline-optimization \
 --enable-mbregex \
 --enable-mbstring \
 --enable-intl \
@@ -339,7 +337,6 @@ cd /usr/local/src && wget https://www.php.net/distributions/php-8.2.8.tar.bz2 &&
 --with-mhash \
 --enable-pcntl \
 --enable-sockets \
---with-xmlrpc \
 --with-zip \
 --with-gettext \
 --enable-soap \
@@ -364,7 +361,7 @@ vi /usr/local/php/etc/php.ini
 ~~~bash
 1. 找到 memory_limit = 128M         修改为 memory_limit = 1024M
 2. 找到 date.timezone =             修改为 date.timezone = PRC
-3. 找到 expose_php = On             修改为 expose_php = Off
+3. 找到 n             修改为 expose_php = Off
 4. 找到 opcache.enable=1            修改为 opcache.enable=1
 5. 找到 opcache.enable_cli=0        修改为 opcache.enable_cli=1
 6. 在 Dynamic Extensions 代码块中添加 zend_extension=opcache.so
@@ -456,7 +453,7 @@ apt install -y tcl
 > REDIS 下载安装包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://download.redis.io/releases/redis-6.2.5.tar.gz && tar -zxvf redis-6.2.5.tar.gz && cd redis-6.2.5
+cd /usr/local/src && wget https://github.com/redis/redis/archive/7.2.0.tar.gz && tar -zxvf redis-7.2.0.tar.gz && cd redis-7.2.0
 ~~~
 
 > REDIS 编译及测试
@@ -469,9 +466,9 @@ make -j2 && make test
 
 ~~~bash
 mkdir -p /usr/local/redis
-cp /usr/local/src/redis-6.2.5/redis.conf /usr/local/redis/
-cp /usr/local/src/redis-6.2.5/src/redis-cli /usr/local/redis/
-cp /usr/local/src/redis-6.2.5/src/redis-server /usr/local/redis/
+cp /usr/local/src/redis-7.2.0/redis.conf /usr/local/redis/
+cp /usr/local/src/redis-7.2.0/src/redis-cli /usr/local/redis/
+cp /usr/local/src/redis-7.2.0/src/redis-server /usr/local/redis/
 ~~~
 
 > REDIS 配置参数
@@ -524,7 +521,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-8.2.8/ext && wget http://pecl.php.net/get/redis-5.3.7.tgz && tar -zxvf redis-5.3.7.tgz && cd redis-5.3.7
+cd /usr/local/src/php-8.2.8/ext && wget https://pecl.php.net/get/redis-6.0.0RC2.tgz && tar -zxvf redis-6.0.0RC2.tgz && cd redis-6.0.0RC2
 ~~~
 
 > REDIS编译安装
