@@ -1,4 +1,4 @@
-***Debian10 部署 lnmp + redis + swoole 生产环境***
+***Debian11 部署 lnmp + redis + swoole 生产环境***
 ==============================================================
 
 * ModifyTime:2023-08-21  Author:JerRie
