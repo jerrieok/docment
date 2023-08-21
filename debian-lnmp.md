@@ -17,7 +17,7 @@ apt update -y && apt upgrade -y
 > 安装基础工具
 
 ~~~bash
-apt install -y build-essential wget curl bzip2 git screen
+apt install -y build-essential wget curl bzip2 unzip git screen
 ~~~
 
 > 修改vi配置
