@@ -167,7 +167,6 @@ apt autoremove -y libmariadb*
 
 #安装依赖
 apt install -y cmake libncurses5-dev
-#可能需要安装的扩展:libgnutls28-dev bison libpcre2-dev librocksdb5.17
 ~~~
 
 > MARIADB 下载源码包并解压
@@ -302,7 +301,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 > PHP 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://www.php.net/distributions/php-7.4.33.tar.bz2 && tar jxf php-7.4.33.tar.bz2 && cd php-7.4.33
+cd /usr/local/src && wget https://www.php.net/distributions/php-8.2.8.tar.bz2 && tar jxf php-8.2.8.tar.bz2 && cd php-8.2.8
 ~~~
 
 > PHP 编译及安装
@@ -317,18 +316,20 @@ cd /usr/local/src && wget https://www.php.net/distributions/php-7.4.33.tar.bz2 &
 --enable-mysqlnd \
 --with-mysqli=mysqlnd \
 --with-pdo-mysql=mysqlnd \
---with-iconv-dir \
+--with-curl \
 --enable-gd \
---with-jpeg \
---with-freetype \
+--enable-gd-native-ttf \
+--with-iconv-dir \
+--with-jpeg-dir \
+--with-png-dir \
+--with-freetype-dir \
 --with-zlib \
+--enable-opcache \
 --enable-xml \
---disable-rpath \
 --enable-bcmath \
 --enable-shmop \
 --enable-sysvsem \
 --enable-inline-optimization \
---with-curl \
 --enable-mbregex \
 --enable-mbstring \
 --enable-intl \
@@ -340,12 +341,12 @@ cd /usr/local/src && wget https://www.php.net/distributions/php-7.4.33.tar.bz2 &
 --enable-sockets \
 --with-xmlrpc \
 --with-zip \
---enable-soap \
 --with-gettext \
+--enable-soap \
 --enable-fileinfo \
---enable-opcache \
 --with-xsl \
---with-pear && make -j2 && make install
+--with-pear \
+--disable-rpath && make -j2 && make install
 ~~~
 
 > PHP 复制配置文件
@@ -523,7 +524,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.33/ext && wget http://pecl.php.net/get/redis-5.3.7.tgz && tar -zxvf redis-5.3.7.tgz && cd redis-5.3.7
+cd /usr/local/src/php-8.2.8/ext && wget http://pecl.php.net/get/redis-5.3.7.tgz && tar -zxvf redis-5.3.7.tgz && cd redis-5.3.7
 ~~~
 
 > REDIS编译安装
@@ -555,7 +556,7 @@ PHP安装SWOOLE扩展支持
 > SWOOLE 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-7.4.33/ext && git clone https://gitee.com/swoole/swoole.git && cd swoole
+cd /usr/local/src/php-8.2.8/ext && git clone https://gitee.com/swoole/swoole.git && cd swoole
 ~~~
 
 > SWOOLE 编译安装
