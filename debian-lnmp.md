@@ -453,7 +453,7 @@ apt install -y tcl
 > REDIS 下载安装包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://github.com/redis/redis/archive/7.2.0.tar.gz && tar -zxvf redis-7.2.0.tar.gz && cd redis-7.2.0
+cd /usr/local/src && wget https://github.com/redis/redis/archive/7.2.4.tar.gz && tar -zxvf redis-7.2.4.tar.gz && cd redis-7.2.4
 ~~~
 
 > REDIS 编译及测试
@@ -466,9 +466,9 @@ make -j2 && make test
 
 ~~~bash
 mkdir -p /usr/local/redis
-cp /usr/local/src/redis-7.2.0/redis.conf /usr/local/redis/
-cp /usr/local/src/redis-7.2.0/src/redis-cli /usr/local/redis/
-cp /usr/local/src/redis-7.2.0/src/redis-server /usr/local/redis/
+cp /usr/local/src/redis-7.2.4/redis.conf /usr/local/redis/
+cp /usr/local/src/redis-7.2.4/src/redis-cli /usr/local/redis/
+cp /usr/local/src/redis-7.2.4/src/redis-server /usr/local/redis/
 ~~~
 
 > REDIS 配置参数
