@@ -53,7 +53,7 @@ source ~/.bashrc
 groupadd www && useradd -s /sbin/nologin -g www www
 
 #创建目录
-mkdir -p /data/web && chown -R www:www /data/web
+mkdir -p /web && chown -R www:www /web
 
 #安装依赖
 apt install -y libpcre3-dev libssl-dev libzip-dev
@@ -69,7 +69,7 @@ cd /usr/local/src && wget http://nginx.org/download/nginx-1.24.0.tar.gz && tar -
 
 ~~~bash
 ./configure \
---prefix=/usr/local/nginx \
+--prefix=/lnmp/nginx \
 --without-http_memcached_module \
 --user=www  \
 --group=www \
@@ -82,7 +82,7 @@ cd /usr/local/src && wget http://nginx.org/download/nginx-1.24.0.tar.gz && tar -
 > NGINX 配置
 
 ~~~bash
-vi /usr/local/nginx/conf/nginx.conf
+vi /lnmp/nginx/conf/nginx.conf
 ~~~
 
 ~~~bash
@@ -115,7 +115,7 @@ events {
 
 ~~~bash
 touch /etc/profile.d/nginx.sh
-echo 'export PATH=$PATH:/usr/local/nginx/sbin/' > /etc/profile.d/nginx.sh
+echo 'export PATH=$PATH:/lnmp/nginx/sbin/' > /etc/profile.d/nginx.sh
 chmod 0777 /etc/profile.d/nginx.sh
 source /etc/profile.d/nginx.sh
 ~~~
@@ -133,10 +133,10 @@ After=network.target
 
 [Service]
 Type=forking
-PIDFile=/usr/local/nginx/logs/nginx.pid
-ExecStart=/usr/local/nginx/sbin/nginx
-ExecReload=/usr/local/nginx/sbin/nginx -s reload
-ExecStop=/usr/local/nginx/sbin/nginx -s quit
+PIDFile=/lnmp/nginx/logs/nginx.pid
+ExecStart=/lnmp/nginx/sbin/nginx
+ExecReload=/lnmp/nginx/sbin/nginx -s reload
+ExecStop=/lnmp/nginx/sbin/nginx -s quit
 PrivateTmp=true
 
 [Install]
@@ -160,7 +160,7 @@ systemctl start nginx.service       #启动服务
 groupadd mysql && useradd -s /sbin/nologin -g mysql mysql
 
 #创建数据库目录
-mkdir -p /usr/local/mysql && mkdir -p /data/mysql && chown -R mysql:mysql /data/mysql
+mkdir -p /lnmp/mysql && mkdir -p /lnmp/mysql/database && chown -R mysql:mysql /lnmp/mysql/database
 
 #删除自带库
 apt autoremove -y libmariadb*
@@ -172,16 +172,16 @@ apt install -y cmake libncurses5-dev
 > MARIADB 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-11.2.1/source/mariadb-11.2.1.tar.gz && tar -zxvf mariadb-11.2.1.tar.gz && cd mariadb-11.2.1
+cd /usr/local/src && wget https://mariadb.nethub.com.hk/mariadb-11.3.2/source/mariadb-11.3.2.tar.gz && tar -zxvf mariadb-11.3.2.tar.gz && cd mariadb-11.3.2
 ~~~
 
 > MARIADB 编译安装
 
 ~~~bash
-cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
+cmake . -DCMAKE_INSTALL_PREFIX=/lnmp/mysql \
 -DCMAKE_BUILD_TYPE=Release \
--DSYSCONFDIR=/usr/local/mysql/support-files \
--DMYSQL_DATADIR=/data/mysql \
+-DSYSCONFDIR=/lnmp/mysql/support-files \
+-DMYSQL_DATADIR=/lnmp/mysql/database \
 -DMYSQL_UNIX_ADDR=/dev/shm/mysql.sock \
 -DEXTRA_CHARSETS=all \
 -DDEFAULT_CHARSET=utf8mb4 \
@@ -198,19 +198,19 @@ cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
 > MARIADB 初始化数据库
 
 ~~~bash
-cd /usr/local/mysql/ && scripts/mysql_install_db --user=mysql --datadir=/data/mysql
+cd /lnmp/mysql/ && scripts/mysql_install_db --user=mysql --datadir=/lnmp/mysql/database
 ~~~
 
 > MARIADB 复制MYSQL配置文件
 
 ~~~bash
-cp /usr/local/mysql/support-files/wsrep.cnf /usr/local/mysql/support-files/my.cnf
+cp /lnmp/mysql/support-files/wsrep.cnf /lnmp/mysql/support-files/my.cnf
 ~~~
 
 > 指定mysql.server启停脚本中的
 ~~~bash
-vi /usr/local/mysql/support-files/mysql.server
-mariadbd_pid_file_path='/data/mysql/mysqld.pid'
+vi /lnmp/mysql/support-files/mysql.server
+mariadbd_pid_file_path='/lnmp/mysql/database/mysqld.pid'
 ~~~
 
 > MARIADB 创建自启动脚本
@@ -227,10 +227,10 @@ After=network.target
 [Service]
 Type=forking
 PermissionsStartOnly=true
-PIDFile=/data/mysql/mysqld.pid
-ExecStart=/usr/local/mysql/support-files/mysql.server start
-ExecReload=/usr/local/mysql/support-files/mysql.server restart
-ExecStop=/usr/local/mysql/support-files/mysql.server stop
+PIDFile=/lnmp/mysql/database/mysqld.pid
+ExecStart=/lnmp/mysql/support-files/mysql.server start
+ExecReload=/lnmp/mysql/support-files/mysql.server restart
+ExecStop=/lnmp/mysql/support-files/mysql.server stop
 PrivateTmp=true
 
 [Install]
@@ -263,7 +263,7 @@ Reload privilege tables now? [Y/n] Y                 现在重新加载权限表
 
 ~~~bash
 touch /etc/profile.d/mysql.sh
-echo 'export PATH=$PATH:/usr/local/mysql/bin/' > /etc/profile.d/mysql.sh
+echo 'export PATH=$PATH:/lnmp/mysql/bin/' > /etc/profile.d/mysql.sh
 chmod 0777 /etc/profile.d/mysql.sh
 source /etc/profile.d/mysql.sh
 ~~~
