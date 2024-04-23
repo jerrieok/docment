@@ -465,16 +465,16 @@ make -j2 && make test
 > REDIS 创建存储redis文件目录 将所需要的文件移到该目录下
 
 ~~~bash
-mkdir -p /usr/local/redis
-cp /usr/local/src/redis-7.2.4/redis.conf /usr/local/redis/
-cp /usr/local/src/redis-7.2.4/src/redis-cli /usr/local/redis/
-cp /usr/local/src/redis-7.2.4/src/redis-server /usr/local/redis/
+mkdir -p /lnmp/redis
+cp /usr/local/src/redis-7.2.4/redis.conf /lnmp/redis/
+cp /usr/local/src/redis-7.2.4/src/redis-cli /lnmp/redis/
+cp /usr/local/src/redis-7.2.4/src/redis-server /lnmp/redis/
 ~~~
 
 > REDIS 配置参数
 
 ~~~bash
-vi /usr/local/redis/redis.conf
+vi /lnmp/redis/redis.conf
 ~~~
 
 ~~~bash
@@ -495,7 +495,7 @@ After=syslog.target network.target
 [Service]
 Type=forking
 PIDFile=/var/run/redis_6379.pid
-ExecStart=/usr/local/redis/redis-server /usr/local/redis/redis.conf
+ExecStart=/lnmp/redis/redis-server /lnmp/redis/redis.conf
 ExecReload=/bin/kill -USR2 $MAINPID
 ExecStop=/bin/kill -SIGINT $MAINPID
 [Install]
