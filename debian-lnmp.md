@@ -301,7 +301,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 > PHP 下载源码包并解压
 
 ~~~bash
-cd /usr/local/src && wget https://www.php.net/distributions/php-8.3.3.tar.bz2 && tar jxf php-8.3.3.tar.bz2 && cd php-8.3.3
+cd /usr/local/src && wget https://www.php.net/distributions/php-8.3.6.tar.bz2 && tar jxf php-8.3.6.tar.bz2 && cd php-8.3.6
 ~~~
 
 > PHP 编译及安装
