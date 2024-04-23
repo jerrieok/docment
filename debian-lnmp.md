@@ -521,7 +521,7 @@ apt install -y autoconf
 > REDIS 下载扩展包
 
 ~~~bash
-cd /usr/local/src/php-8.3.6/ext && wget https://pecl.php.net/get/redis-6.0.0RC2.tgz && tar -zxvf redis-6.0.0RC2.tgz && cd redis-6.0.0RC2
+cd /usr/local/src/php-8.3.6/ext && wget https://pecl.php.net/get/redis-6.0.2.tgz && tar -zxvf redis-6.0.2.tgz && cd redis-6.0.2
 ~~~
 
 > REDIS编译安装
