@@ -307,9 +307,9 @@ cd /usr/local/src && wget https://www.php.net/distributions/php-8.3.3.tar.bz2 &&
 > PHP 编译及安装
 
 ~~~bash
-./configure --prefix=/usr/local/php \
---with-config-file-path=/usr/local/php/etc \
---with-config-file-scan-dir=/usr/local/php/conf.d \
+./configure --prefix=/lnmp/php \
+--with-config-file-path=/lnmp/php/etc \
+--with-config-file-scan-dir=/lnmp/php/conf.d \
 --enable-fpm \
 --with-fpm-user=www \
 --with-fpm-group=www \
@@ -349,13 +349,13 @@ cd /usr/local/src && wget https://www.php.net/distributions/php-8.3.3.tar.bz2 &&
 > PHP 复制配置文件
 
 ~~~bash
-cp php.ini-production /usr/local/php/etc/php.ini
+cp php.ini-production /lnmp/php/etc/php.ini
 ~~~
 
 > PHP 配制参数
 
 ~~~bash
-vi /usr/local/php/etc/php.ini
+vi /lnmp/php/etc/php.ini
 ~~~
 
 ~~~bash
@@ -370,17 +370,17 @@ vi /usr/local/php/etc/php.ini
 > PHP 配置php-fpm
 
 ~~~bash
-cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
-cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
-cp sapi/fpm/init.d.php-fpm /usr/local/php/bin/php-fpm
-chmod 0777 /usr/local/php/bin/php-fpm
+cp /lnmp/php/etc/php-fpm.conf.default /lnmp/php/etc/php-fpm.conf
+cp /lnmp/php/etc/php-fpm.d/www.conf.default /lnmp/php/etc/php-fpm.d/www.conf
+cp sapi/fpm/init.d.php-fpm /lnmp/php/bin/php-fpm
+chmod 0777 /lnmp/php/bin/php-fpm
 ~~~
 
 > PHP 配置环境变量
 
 ~~~bash
 touch /etc/profile.d/php.sh
-echo 'export PATH=$PATH:/usr/local/php/bin/' > /etc/profile.d/php.sh
+echo 'export PATH=$PATH:/lnmp/php/bin/' > /etc/profile.d/php.sh
 chmod 0777 /etc/profile.d/php.sh
 source /etc/profile.d/php.sh
 ~~~
@@ -388,7 +388,7 @@ source /etc/profile.d/php.sh
 > PHP 使用SOCK方式监听
 
 ~~~bash
-vi /usr/local/php/etc/php-fpm.d/www.conf
+vi /lnmp/php/etc/php-fpm.d/www.conf
 ~~~
 
 ~~~bash
@@ -423,10 +423,10 @@ After=network.target
 
 [Service]
 Type=forking
-PIDFile=/usr/local/php/var/run/php-fpm.pid
-ExecStart=/usr/local/php/bin/php-fpm start
-ExecReload=/usr/local/php/bin/php-fpm restart
-ExecStop=/usr/local/php/bin/php-fpm stop
+PIDFile=/lnmp/php/var/run/php-fpm.pid
+ExecStart=/lnmp/php/bin/php-fpm start
+ExecReload=/lnmp/php/bin/php-fpm restart
+ExecStop=/lnmp/php/bin/php-fpm stop
 PrivateTmp=true
 
 [Install]
@@ -528,16 +528,16 @@ cd /usr/local/src/php-8.3.6/ext && wget https://pecl.php.net/get/redis-6.0.0RC2.
 
 ~~~bash
 #执行扩展命令
-/usr/local/php/bin/phpize
+/lnmp/php/bin/phpize
 
 #编译及安装
-./configure --with-php-config=/usr/local/php/bin/php-config && make -j2 && make install
+./configure --with-php-config=/lnmp/php/bin/php-config && make -j2 && make install
 ~~~
 
 > REDIS 修改php.ini
 
 ~~~bash
-vi /usr/local/php/etc/php.ini
+vi /lnmp/php/etc/php.ini
 ~~~
 
 ~~~bash
@@ -560,16 +560,16 @@ cd /usr/local/src/php-8.3.6/ext && git clone https://gitee.com/swoole/swoole.git
 
 ~~~bash
 #执行扩展命令
-/usr/local/php/bin/phpize
+/lnmp/php/bin/phpize
 
 #编译及安装
-./configure --with-php-config=/usr/local/php/bin/php-config && make && make install
+./configure --with-php-config=/lnmp/php/bin/php-config && make && make install
 ~~~
 
 > SWOOLE 修改php.ini
 
 ~~~bash
-vi /usr/local/php/etc/php.ini
+vi /lnmp/php/etc/php.ini
 ~~~
 
 ~~~bash
