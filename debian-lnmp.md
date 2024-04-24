@@ -275,7 +275,7 @@ mysql -uroot -p
 ~~~
 
 ~~~bash
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'cmjzj1109ZJ' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY '******' WITH GRANT OPTION;
 quit;
 ~~~
 
